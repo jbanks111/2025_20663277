@@ -24,7 +24,7 @@ jobs:
 
       # Run Doxygen on Worksheet5 folder
       - name: Run Doxygen
-        working-directory: ${{ github.workspace }}/Worksheet5
+        working-directory: ${{ github.workspace }}/worksheet5
         run: doxygen
 
       # Deploy html output from Doxygen to gh-pages branch
@@ -32,4 +32,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages
-          folder: ${{ github.workspace }}/Worksheet5/html
+          folder: ${{ github.workspace }}/worksheet5/html
