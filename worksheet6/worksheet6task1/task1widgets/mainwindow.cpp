@@ -8,7 +8,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->pushButton, &QPushButton::released, this, &MainWindow::handleButton);
+
     connect(ui->pushButton_2, &QPushButton::clicked, this, &MainWindow::handleSubtractButton);
+
+    connect(this, &MainWindow::statusUpdateMessage, ui->statusbar, &QStatusBar::showMessage);
 }
 
 MainWindow::~MainWindow()
@@ -18,13 +21,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::handleButton()
 {
-    QMessageBox msgBox;
-    msgBox.setText("Add button was clicked");
-    msgBox.exec();
+    emit statusUpdateMessage("Add button was clicked", 0);
 }
 void MainWindow::handleSubtractButton()
 {
-    QMessageBox msgBox;
-    msgBox.setText("Subtract button was clicked");
-    msgBox.exec();
+    emit statusUpdateMessage("Subtract button was clicked", 0);
 }
