@@ -18,6 +18,7 @@ public:
     ~MainWindow();
 public slots:
       void handleButton();
+      void handleSubtractButton();
 private:
     Ui::MainWindow *ui;
 };
