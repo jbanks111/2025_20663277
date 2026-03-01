@@ -11,6 +11,10 @@ qt_add_executable(task1widgets
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
+    modelPart.cpp
+    modelPart.h
+    modelPartList.cpp
+    modelPartList.h
 )
 
 target_link_libraries(task1widgets
