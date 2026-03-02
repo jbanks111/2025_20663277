@@ -2,8 +2,12 @@
 #include "ui_mainwindow.h"
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QLineEdit>
+#include <QSpinBox>
+#include <QCheckBox>
 #include "ModelPart.h"
 #include "ModelPartList.h"
+#include "optiondialog.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -20,6 +24,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     /* Link it to the tree view in the GUI */
     ui->treeView->setModel(this->partList);
+
+    ui->treeView->addAction(ui->actionItem_Options);
 
     /* Manually create a model tree = there are much better and more flexible ways of doing this,
        e.g. with nested functions. This is just a quick example as a starting point. */
@@ -67,7 +73,13 @@ void MainWindow::handleButton()
 }
 void MainWindow::handleSubtractButton()
 {
-    emit statusUpdateMessage("Subtract button was clicked", 0);
+    optionDialog dialog(this);
+
+    if (dialog.exec() == QDialog::Accepted) {
+        emit statusUpdateMessage(QString("Dialog accepted"), 0);
+    } else {
+        emit statusUpdateMessage(QString("Dialog rejected"), 0);
+    }
 }
 void MainWindow::handleTreeClicked(const QModelIndex& index)
 {
@@ -103,4 +115,8 @@ void MainWindow::on_actionOpen_File_triggered()
         0
     );
 }
-
+void MainWindow::on_actionItem_Options_triggered()
+{
+    emit statusUpdateMessage("Context menu action triggered", 0);
+    handleSubtractButton();
+}

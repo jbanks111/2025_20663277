@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "ModelPartList.h"
 #include "ModelPart.h"
+#include "optiondialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -28,6 +29,7 @@ public slots:
       void handleTreeClicked(const QModelIndex& index);
   private slots:
       void on_actionOpen_File_triggered();
+      void on_actionItem_Options_triggered();
 
   private:
     Ui::MainWindow *ui;

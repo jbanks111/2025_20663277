@@ -18,6 +18,9 @@ qt_add_executable(task1widgets
     modelPartList.cpp
     modelPartList.h
     icons.qrc
+    optiondialog.h 
+    optiondialog.cpp 
+    optiondialog.ui
 )
 
 target_link_libraries(task1widgets
