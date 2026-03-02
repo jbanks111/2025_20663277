@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QMessageBox>
+#include "ModelPart.h"
+#include "ModelPartList.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -47,6 +49,10 @@ MainWindow::MainWindow(QWidget *parent)
             childItem->appendChild(childChildItem);
         }
     }
+    connect(ui->treeView,
+        &QTreeView::clicked,
+        this,
+        &MainWindow::handleTreeClicked);
 }
 
 MainWindow::~MainWindow()
@@ -61,4 +67,21 @@ void MainWindow::handleButton()
 void MainWindow::handleSubtractButton()
 {
     emit statusUpdateMessage("Subtract button was clicked", 0);
+}
+void MainWindow::handleTreeClicked(const QModelIndex& index)
+{
+    /* Get a pointer to the item from the index */
+    ModelPart* selectedPart =
+        static_cast<ModelPart*>(index.internalPointer());
+
+    if (!selectedPart)
+        return;
+
+    /* Retrieve the name string from column 0 */
+    QString text = selectedPart->data(0).toString();
+
+    emit statusUpdateMessage(
+        QString("The selected item is: ") + text,
+        0
+    );
 }
