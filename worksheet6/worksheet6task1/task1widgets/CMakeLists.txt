@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.19)
 project(task1widgets LANGUAGES CXX)
 
+set(CMAKE_AUTORCC ON)
+
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
 
 qt_standard_project_setup()

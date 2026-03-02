@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QMessageBox>
+#include <QFileDialog>
 #include "ModelPart.h"
 #include "ModelPartList.h"
 
@@ -88,5 +89,11 @@ void MainWindow::handleTreeClicked(const QModelIndex& index)
 void MainWindow::on_actionOpen_File_triggered()
 {
     emit statusUpdateMessage(QString ("Open File action triggered"),0);
+    QString fileName = QFileDialog::getOpenFileName(
+        this,
+        tr("Open File"),
+        "C:\\",
+        tr("STL Files (*.stl);;Text Files (*.txt)")
+    );
 }
 

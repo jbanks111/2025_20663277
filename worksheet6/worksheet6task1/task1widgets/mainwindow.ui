@@ -83,8 +83,8 @@
   </widget>
   <action name="actionOpen_File">
    <property name="icon">
-    <iconset resource="icons.qrc">
-     <normaloff>:/icons/open-folder.png</normaloff>:/icons/open-folder.png</iconset>
+    <iconset>
+     <normaloff>:/icons/fileopen.png</normaloff>:/icons/fileopen.png</iconset>
    </property>
    <property name="text">
     <string>Open File</string>
@@ -94,8 +94,6 @@
    </property>
   </action>
  </widget>
- <resources>
-  <include location="icons.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
