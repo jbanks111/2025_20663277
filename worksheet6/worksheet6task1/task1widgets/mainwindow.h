@@ -26,7 +26,10 @@ public slots:
       void handleButton();
       void handleSubtractButton();
       void handleTreeClicked(const QModelIndex& index);
-private:
+  private slots:
+      void on_actionOpen_File_triggered();
+
+  private:
     Ui::MainWindow *ui;
     ModelPartList* partList;
 };
