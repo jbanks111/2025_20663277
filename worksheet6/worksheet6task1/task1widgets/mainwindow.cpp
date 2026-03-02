@@ -95,5 +95,12 @@ void MainWindow::on_actionOpen_File_triggered()
         "C:\\",
         tr("STL Files (*.stl);;Text Files (*.txt)")
     );
+    if (fileName.isEmpty())
+        return;  // user pressed cancel
+
+    emit statusUpdateMessage(
+        QString("Selected file: ") + fileName,
+        0
+    );
 }
 
