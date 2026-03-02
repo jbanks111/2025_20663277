@@ -15,6 +15,7 @@ qt_add_executable(task1widgets
     modelPart.h
     modelPartList.cpp
     modelPartList.h
+    icons.qrc
 )
 
 target_link_libraries(task1widgets
