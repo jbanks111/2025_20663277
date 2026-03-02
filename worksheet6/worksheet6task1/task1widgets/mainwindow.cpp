@@ -85,3 +85,8 @@ void MainWindow::handleTreeClicked(const QModelIndex& index)
         0
     );
 }
+void MainWindow::on_actionOpen_File_triggered()
+{
+    emit statusUpdateMessage(QString ("Open File action triggered"),0);
+}
+
