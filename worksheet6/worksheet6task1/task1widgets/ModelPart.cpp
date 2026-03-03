@@ -96,6 +96,9 @@ int ModelPart::row() const {
 }
 
 void ModelPart::setColour(const unsigned char R, const unsigned char G, const unsigned char B) {
+    colourR = R;
+    colourG = G;
+    colourB = B;
     /* This is a placeholder function that you will need to modify if you want to use it */
     
     /* As the name suggests ... */
@@ -105,14 +108,14 @@ unsigned char ModelPart::getColourR() {
     /* This is a placeholder function that you will need to modify if you want to use it */
     
     /* As the name suggests ... */
-    return 0;   // needs updating
+    return colourR;   // needs updating
 }
 
 unsigned char ModelPart::getColourG() {
     /* This is a placeholder function that you will need to modify if you want to use it */
     
     /* As the name suggests ... */
-    return 0;   // needs updating
+    return colourG;   // needs updating
 }
 
 
@@ -120,23 +123,25 @@ unsigned char ModelPart::getColourB() {
    /* This is a placeholder function that you will need to modify if you want to use it */
     
     /* As the name suggests ... */
-    return 0;   // needs updating
+    return colourB;   // needs updating
 }
 
 
-void ModelPart::setVisible(bool isVisible) {
-    /* This is a placeholder function that you will need to modify if you want to use it */
-    
-    /* As the name suggests ... */
+void ModelPart::setName(const QString& name) {
+    m_itemData[0] = name;   // column 0 stores the name
 }
 
-bool ModelPart::visible() {
-    /* This is a placeholder function that you will need to modify if you want to use it */
-    
-    /* As the name suggests ... */
-    return false;
+QString ModelPart::getName() const {
+    return m_itemData[0].toString();
 }
 
+void ModelPart::setVisible(bool visible) {
+    m_itemData[1] = visible ? "true" : "false"; // column 1 stores visible
+}
+
+bool ModelPart::Visible() const {
+    return m_itemData[1].toString() == "true";
+}
 void ModelPart::loadSTL( QString fileName ) {
     /* This is a placeholder function that you will need to modify if you want to use it */
     
