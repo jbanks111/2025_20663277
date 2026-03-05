@@ -7,17 +7,19 @@ set(CMAKE_AUTORCC ON)
 # Find Qt
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
 
-# Find VTK (include Qt support)
+# Find VTK (include Qt support and STL I/O)
 find_package(VTK REQUIRED COMPONENTS
     CommonCore
     RenderingCore
     RenderingOpenGL2
     InteractionStyle
     GUISupportQt
+    IOGeometry        # For vtkSTLReader
 )
 
 qt_standard_project_setup()
 
+# Add executable
 qt_add_executable(task1widgets
     WIN32 MACOSX_BUNDLE
     main.cpp
@@ -34,6 +36,7 @@ qt_add_executable(task1widgets
     optiondialog.ui
 )
 
+# Link libraries
 target_link_libraries(task1widgets
     PRIVATE
         Qt6::Core
@@ -43,6 +46,7 @@ target_link_libraries(task1widgets
         VTK::RenderingOpenGL2
         VTK::InteractionStyle
         VTK::GUISupportQt
+        VTK::IOGeometry
 )
 
 # Required for VTK module initialization
@@ -54,8 +58,10 @@ vtk_module_autoinit(
         VTK::RenderingOpenGL2
         VTK::InteractionStyle
         VTK::GUISupportQt
+        VTK::IOGeometry
 )
 
+# Install rules
 include(GNUInstallDirs)
 
 install(TARGETS task1widgets

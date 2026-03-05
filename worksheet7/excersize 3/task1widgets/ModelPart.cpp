@@ -162,11 +162,10 @@ void ModelPart::loadSTL(QString fileName)
     actor = vtkSmartPointer<vtkActor>::New();
     actor->SetMapper(mapper);
 
-    // Optional: apply stored colour
     actor->GetProperty()->SetColor(
-        colourR / 255.0,
-        colourG / 255.0,
-        colourB / 255.0
+        colour.GetRed() / 255.0,
+        colour.GetGreen() / 255.0,
+        colour.GetBlue() / 255.0
     );
 }
 

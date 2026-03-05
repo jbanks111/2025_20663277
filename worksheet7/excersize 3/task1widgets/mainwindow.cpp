@@ -248,6 +248,8 @@ void MainWindow::updateRender()
 
     updateRenderFromTree(partList->index(0, 0, QModelIndex()));
 
+    renderer->ResetCamera();
+
     renderWindow->Render();
 }
 void MainWindow::updateRenderFromTree(const QModelIndex& index)
